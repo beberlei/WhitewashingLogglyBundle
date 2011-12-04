@@ -11,7 +11,7 @@
  * to kontakt@beberlei.de so I can send you a copy immediately.
  */
 
-namespace Whitewashing\Bundle\LogglyBundle\Monolog\Logger;
+namespace Whitewashing\Bundle\LogglyBundle\Monolog\Handler;
 
 use Whitewashing\Bundle\LogglyBundle\WhitewashingLogglyBundle;
 use Monolog\Handler\AbstractProcessingHandler;
