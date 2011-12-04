@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+        
+    <parameters>
+        <parameter key="whitewashing_loggly.monolog_handler.class">Whitewashing\Bundle\LogglyBundle\Monolog\Handler\LogglyHandler</parameter>
+        <parameter key="whitewashing_loggly.loggly.key">Whitewashing\Bundle\LogglyBundle\Monolog\Handler\LogglyHandler</parameter>
+        <parameter key="whitewashing_loggly.loggly.port">443</parameter>
+        <parameter key="whitewashing_loggly.loggly.host">logs.loggly.com</parameter>
+    </parameters>
+
+    <services>
+        <service id="whitewashing_loggly.monolog_handler" class="%whitewashing_loggly.monolog_handler.class%">
+            <argument>%whitewashing_loggly.loggly.key%</argument>
+            <argument>%whitewashing_loggly.loggly.port%</argument>
+            <argument>%whitewashing_loggly.loggly.host%</argument>
+        </service>
+    </services>
+</container>
