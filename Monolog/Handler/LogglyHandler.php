@@ -57,7 +57,7 @@ class LogglyHandler extends AbstractProcessingHandler
     {
         $message = $record['formatted'];
         
-        $fp = $this->getHandler();
+        $fp = fsockopen($this->getTransport(), $this->port, $errno, $errstr, 30);
         if (!$fp) {
             return false;
         }
@@ -71,31 +71,9 @@ class LogglyHandler extends AbstractProcessingHandler
         $request.= $message;
         
         fwrite($fp, $request);
+        fclose($fp);
         
         return true;
-    }
-    
-    /**
-     * {@inheritDoc}
-     */
-    public function close()
-    {
-        if ($this->fp) {
-            fclose($this->fp);
-        }
-    }
-    
-    /**
-     * Open http socket once.
-     * 
-     * @return resource
-     */
-    private function getHandler()
-    {
-        if (!$this->fp) {
-            $this->fp = fsockopen($this->getTransport(), $this->port, $errno, $errstr, 30);
-        }
-        return $this->fp;
     }
     
     /**
