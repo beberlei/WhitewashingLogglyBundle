@@ -21,12 +21,12 @@ class WhitewashingLogglyExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
         
         $container->setParameter('whitewashing_loggly.loggly.key', $config['key']);
         $container->setParameter('whitewashing_loggly.loggly.host', $config['host']);
         $container->setParameter('whitewashing_loggly.loggly.port', $config['port']);
-
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
     }
 }
