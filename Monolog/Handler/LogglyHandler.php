@@ -20,7 +20,7 @@ use Monolog\Formatter\JsonFormatter;
 /**
  * A loggly log handler for Symfony. It uses the Loggly HTTP API to push
  * logfiles to the cloud service loggly.
- * 
+ *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  */
 class LogglyHandler extends AbstractProcessingHandler
@@ -37,31 +37,31 @@ class LogglyHandler extends AbstractProcessingHandler
      * @var string
      */
     private $host;
-    
+
     /**
      * @var resource
      */
     private $fp;
-    
+
     public function __construct($key, $port = 443, $host = 'logs.loggly.com')
     {
         $this->key = $key;
         $this->port = $port;
         $this->host = $host;
     }
-    
+
     /**
      * {@inheritDoc}
      */
     protected function write(array $record)
     {
         $message = $record['formatted'];
-        
+
         $fp = fsockopen($this->getTransport(), $this->port, $errno, $errstr, 30);
         if (!$fp) {
             return false;
         }
-        
+
         $request = "POST /inputs/".$this->key." HTTP/1.1\r\n";
         $request.= "Host: ".$this->host."\r\n";
         $request.= "User-Agent: Whitewashing LogglyBundle " . WhitewashingLogglyBundle::VERSION . "\r\n";
@@ -69,16 +69,16 @@ class LogglyHandler extends AbstractProcessingHandler
         $request.= "Content-Length: ".strlen($message)."\r\n";
         $request.= "Connection: Close\r\n\r\n";
         $request.= $message;
-        
+
         fwrite($fp, $request);
         fclose($fp);
-        
+
         return true;
     }
-    
+
     /**
      * Get socket transport url
-     * 
+     *
      * @return string
      */
     private function getTransport()
