@@ -43,7 +43,16 @@ Configure Monolog
 Configure Loggly:
 
     whitewashing_loggly:
+        # Loggly input key
         key: abcdefg
-        host: logs.loggly.com
-        post: 443
 
+        # Loggly API host
+        host: logs.loggly.com
+
+        # Loggly API port (443 for HTTPS, 80 for HTTP)
+        port: 443
+
+        # Level to be logged (defaults to DEBUG)
+        level: DEBUG
+
+        bubble: true
