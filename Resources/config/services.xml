@@ -8,6 +8,8 @@
         <parameter key="whitewashing_loggly.loggly.key"></parameter>
         <parameter key="whitewashing_loggly.loggly.port">443</parameter>
         <parameter key="whitewashing_loggly.loggly.host">logs.loggly.com</parameter>
+        <parameter key="whitewashing_loggly.loggly.level"></parameter>
+        <parameter key="whitewashing_loggly.loggly.bubble">true</parameter>
     </parameters>
 
     <services>
@@ -15,6 +17,8 @@
             <argument>%whitewashing_loggly.loggly.key%</argument>
             <argument>%whitewashing_loggly.loggly.port%</argument>
             <argument>%whitewashing_loggly.loggly.host%</argument>
+            <argument>%whitewashing_loggly.loggly.level%</argument>
+            <argument>%whitewashing_loggly.loggly.bubble%</argument>
         </service>
     </services>
 </container>

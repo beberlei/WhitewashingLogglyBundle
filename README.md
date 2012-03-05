@@ -10,20 +10,20 @@ Deps
 
     [WhitewashingLogglyBundle]
         git=https://github.com/beberlei/WhitewashingLogglyBundle.git
-        target=/bundles/Whitewashing/Bundle/LogglyBundle
+        target=/bundles/Whitewashing/LogglyBundle
 
 Kernel
 
     $bundles = array(
         //..
-        new Whitewashing\Bundle\LogglyBundle\WhitewashingLogglyBundle(),
+        new Whitewashing\LogglyBundle\WhitewashingLogglyBundle(),
     );
 
 Autoload:
 
     $loader->registerNamespaces(array(
         //..
-        'Whitewashing\Bundle\LogglyBundle' => __DIR__.'/../vendor/bundles',
+        'Whitewashing\LogglyBundle' => __DIR__.'/../vendor/bundles',
     ));
 
 ## Configuration
@@ -43,7 +43,16 @@ Configure Monolog
 Configure Loggly:
 
     whitewashing_loggly:
+        # Loggly input key
         key: abcdefg
-        host: logs.loggly.com
-        post: 443
 
+        # Loggly API host
+        host: logs.loggly.com
+
+        # Loggly API port (443 for HTTPS, 80 for HTTP)
+        port: 443
+
+        # Level to be logged (defaults to DEBUG)
+        level: DEBUG
+
+        bubble: true

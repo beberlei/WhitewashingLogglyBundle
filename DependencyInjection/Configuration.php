@@ -21,10 +21,12 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('whitewashing_loggly');
 
         $rootNode->children()
-                    ->scalarNode('key')->isRequired()->end()
-                    ->scalarNode('port')->defaultValue(443)->end()
-                    ->scalarNode('host')->defaultValue('logs.loggly.com')->end()
-                ->end();
+                ->scalarNode('key')->isRequired()->end()
+                ->scalarNode('port')->defaultValue(443)->end()
+                ->scalarNode('host')->defaultValue('logs.loggly.com')->end()
+                ->scalarNode('level')->defaultValue(constant('Monolog\Logger::DEBUG'))->end()
+                ->booleanNode('bubble')->defaultValue(true)->end()
+            ->end();
 
         return $treeBuilder;
     }
