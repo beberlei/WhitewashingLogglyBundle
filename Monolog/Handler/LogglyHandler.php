@@ -38,11 +38,6 @@ class LogglyHandler extends AbstractProcessingHandler
      */
     private $host;
 
-    /**
-     * @var resource
-     */
-    private $fp;
-
     public function __construct($key, $port = 443, $host = 'logs.loggly.com', $level = Logger::DEBUG, $bubble = true)
     {
         $this->key = $key;
