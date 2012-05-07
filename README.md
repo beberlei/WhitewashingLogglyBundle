@@ -10,20 +10,20 @@ Deps
 
     [WhitewashingLogglyBundle]
         git=https://github.com/beberlei/WhitewashingLogglyBundle.git
-        target=/bundles/Whitewashing/LogglyBundle
+        target=/bundles/Whitewashing/Bundle/LogglyBundle
 
 Kernel
 
     $bundles = array(
         //..
-        new Whitewashing\LogglyBundle\WhitewashingLogglyBundle(),
+        new Whitewashing\Bundle\LogglyBundle\WhitewashingLogglyBundle(),
     );
 
 Autoload:
 
     $loader->registerNamespaces(array(
         //..
-        'Whitewashing\LogglyBundle' => __DIR__.'/../vendor/bundles',
+        'Whitewashing' => __DIR__.'/../vendor/bundles',
     ));
 
 ## Configuration
