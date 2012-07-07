@@ -1,0 +1,14 @@
+{
+    "name": "beberlei/loggly-bundle",
+    "description": "Bundle for Symfony2 that extends Monolog for Loggly support",
+    "license": "BSD-2-Clause",
+    "type": "bundle",
+    "authors": [{"name": "Benjamin Eberlei", "email": "kontakt@beberlei.de"}],
+    "require": {
+        "symfony/monolog-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": {"Whitewashing\\Bundle\\LogglyBundle\\": ""}
+    },
+    "target-dir" : "Whitewashing/Bundle/LogglyBundle"
+}
