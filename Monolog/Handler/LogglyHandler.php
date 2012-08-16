@@ -46,14 +46,38 @@ class LogglyHandler extends AbstractProcessingHandler
 
         parent::__construct($level, $bubble);
     }
+		
+	/**
+	 * {@inheritdoc}
+	 */
+    public function handleBatch(array $records)
+    {
+        $messages = array();
 
+        foreach ($records as $record) {
+            if ($record['level'] < $this->level) {
+                continue;
+            }
+            $messages[] = $this->processRecord($record);
+        }
+
+        if (!empty($messages)) {
+			$this->send((string)$this->getFormatter()->formatBatch($messages), $messages);
+        }
+    }
+
+	/**
+	 * {@inheritdoc}
+	 */
+    protected function write(array $record)
+    {
+        $this->send((string) $record['formatted'], array($record));
+    }
     /**
      * {@inheritDoc}
      */
-    protected function write(array $record)
+    protected function send($message, array $records)
     {
-        $message = $record['formatted'];
-
         $fp = fsockopen($this->getTransport(), $this->port, $errno, $errstr, 30);
         if (!$fp) {
             return false;
@@ -69,6 +93,8 @@ class LogglyHandler extends AbstractProcessingHandler
 
         fwrite($fp, $request);
         fclose($fp);
+		
+		file_put_contents('/tmp/loggly-'.uniqid('',true),$message);
 
         return true;
     }
