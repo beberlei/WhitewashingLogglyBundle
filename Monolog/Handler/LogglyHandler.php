@@ -93,8 +93,6 @@ class LogglyHandler extends AbstractProcessingHandler
 
         fwrite($fp, $request);
         fclose($fp);
-		
-		file_put_contents('/tmp/loggly-'.uniqid('',true),$message);
 
         return true;
     }
