@@ -46,10 +46,10 @@ class LogglyHandler extends AbstractProcessingHandler
 
         parent::__construct($level, $bubble);
     }
-		
-	/**
-	 * {@inheritdoc}
-	 */
+
+    /**
+     * {@inheritdoc}
+     */
     public function handleBatch(array $records)
     {
         $messages = array();
@@ -62,17 +62,18 @@ class LogglyHandler extends AbstractProcessingHandler
         }
 
         if (!empty($messages)) {
-			$this->send((string)$this->getFormatter()->formatBatch($messages), $messages);
+            $this->send((string)$this->getFormatter()->formatBatch($messages), $messages);
         }
     }
 
-	/**
-	 * {@inheritdoc}
-	 */
+    /**
+     * {@inheritdoc}
+     */
     protected function write(array $record)
     {
         $this->send((string) $record['formatted'], array($record));
     }
+
     /**
      * {@inheritDoc}
      */
