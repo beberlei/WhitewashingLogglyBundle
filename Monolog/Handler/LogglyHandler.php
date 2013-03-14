@@ -16,6 +16,7 @@ namespace Whitewashing\Bundle\LogglyBundle\Monolog\Handler;
 use Whitewashing\Bundle\LogglyBundle\WhitewashingLogglyBundle;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Formatter\JsonFormatter;
+use Monolog\Logger;
 
 /**
  * A loggly log handler for Symfony. It uses the Loggly HTTP API to push
