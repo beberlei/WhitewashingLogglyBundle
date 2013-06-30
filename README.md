@@ -1,5 +1,7 @@
 # LogglyBundle
 
+    Bundle is not maintained anymore, but mostly works because of its simplicity.
+
 [Loggly](http://loggly.com/) handler for [Monolog](https://github.com/Seldaek/monolog) as a Symfony bundle.
 
 The bundle is inspired from [Monologgly](https://github.com/pradador/Monologgly)
